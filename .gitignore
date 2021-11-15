@@ -1,0 +1,9 @@
+*.a
+minilib*
+objects
+CMake*
+cmake*
+*.o
+other*
+cub3D
+fdf
