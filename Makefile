@@ -16,8 +16,24 @@ MLX_HEADER = $(MLX_DIR)
 HEADER_DIR = ./includes/
 HEADER =  $(addprefix $(HEADER_DIR), cub3D.h)
 
+
+
+
+
+
+
 SRC_DIR = ./sources/
 SRC_LIST = main.c \
+		   parseMap.c \
+		   lst.c\
+		   parseTextures.c \
+		   parse.c \
+		   validMap.c \
+
+
+
+
+
 
 SRC = $(SRC_DIR)/$(SRC_LIST)
 

@@ -38,6 +38,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (i < nb)
 		dest[b++] = s2[i++];
 	dest[b] = '\0';
-	free(s1);
+//	free (s1);
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/08/21 16:46:14 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/17 22:09:57 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,62 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+#include <stdio.h>
 # include "libft.h"
 # include "mlx.h"
+# include <stdbool.h>
 
 typedef struct s_format
 {
-	void	*mlx;
-	void	*window;
-	int		width;
-	int		height;
-	double	zoom;
-	int		color;
-	int		**z_map;
-	int		move_x;
-	int		move_y;
-	int		isometric;
-	float	relief;
-	double	x_angle;
-	double	y_angle;
-	double	z_angle;
+	char *NO;
+	char *SO;
+	char *WE;
+	char *EA;
+	int  F;
+	int FF;
+	int FFF;
+//	char *C;
+	int C;
+	int CC;
+	int CCC;
 }	t_format;
 
-typedef struct s_coords
+typedef struct s_map_list
 {
-	float		z0;
-	float		z1;
-	float		x0;
-	float		y0;
-	float		x1;
-	float		y1;
-}	t_coords;
+	int					strNum;
+	char				*str;
+	struct s_map_list	*head;
+	struct s_map_list	*next;
+	struct s_map_list	*prev;
+}	t_map_list;
 
-int		main(int argc, char **argv);
-void	read_map(char *file_name, t_format *data);
-void	terminate(char const *s);
-void	draw_line(t_coords coords, t_format *data);
-void	draw(t_format *data);
-float	maxfloat(float a, float b);
-float	modfloat(float i);
-int		interactive(int key, t_format *fdf);
-void	menu(t_format *fdf);
-void	pos(t_coords *coords, t_format *fdf);
+typedef struct s_player
+{
+	int		x;
+	int 	y;
+	char 	direction;
+}	t_player;
+
+typedef struct s_map
+{
+	t_player		*player;
+	t_map_list		*lst;
+	char	**m;
+}	t_map;
+
+/*
+ * parse functions
+ */
+
+t_map		*initMapS(void);
+t_map_list	*lst_new(char *str, int strNum);
+void		lstadd_back(t_map_list **lst, t_map_list *new);
+t_map_list	*lst_last(t_map_list *lst);
+void		parseMap(int fd, t_map **map);
+void		validMap(t_map **map);
+void		parse(char *cubFile);
+t_format	*initStT(void);
+void		parseFormat(int fd, t_format **t);
+int			white_spaces_check(char *str);
 
 #endif

@@ -1,8 +1,12 @@
-#include <stdio.h>
 #include "cub3D.h"
 
-int main ()
+
+int main (int argc, char*argv[])
 {
-	printf("hello %d\n", (int)ft_strlen("str"));
-	return 0;
+	if (argc == 2)
+	{
+		parse(argv[1]);
+		exit (0);
+	}
+	terminate("Error");
 }
