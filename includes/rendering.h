@@ -18,15 +18,26 @@ typedef struct s_vector
 	int	y;
 }				t_vector;
 
+typedef struct s_img_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img_data;
+
 typedef struct s_game
 {
 	void			*mlx;
 	void			*window;
 	t_vector		wndw_size;
+	t_img_data 		img;
+	t_map			map;
 }	t_game;
 
-void	start_game(t_game *game);
-void	game_init(t_game *game);
+void	start_game(t_game *game, t_map *map);
+//void	game_init(t_game *game);
 int		exit_game(t_game *game);
 int		ft_input(int key, t_game *game);
 int		ft_update(t_game *game);

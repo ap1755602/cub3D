@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void parse(char *cubFile)
+t_map	*parse(char *cubFile)
 {
 	t_format	*t;
 	t_map		*map;
@@ -18,4 +18,6 @@ void parse(char *cubFile)
 		terminate("Error: non valid .cub file");
 	parseFormat(fd, &t);
 	parseMap(fd, &map);
+	map->format = t;
+	return (map);
 }

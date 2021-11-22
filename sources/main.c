@@ -3,12 +3,13 @@
 
 int main (int argc, char*argv[])
 {
-	t_game game;
+	t_game	game;
+	t_map	*map;
 
 	if (argc == 2)
 	{
-		parse(argv[1]);
-		start_game(&game);
+		map = parse(argv[1]);
+		start_game(&game, map);
 		return (0);
 	}
 	terminate("Error");

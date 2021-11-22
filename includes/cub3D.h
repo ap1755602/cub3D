@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/17 22:09:57 by                  ###   ########.fr       */
+/*   Updated: 2021/11/23 01:16:31 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_map
 {
 	t_player		*player;
 	t_map_list		*lst;
+	t_format		*format;
 	char	**m;
 }	t_map;
 
@@ -70,7 +71,7 @@ void		lstadd_back(t_map_list **lst, t_map_list *new);
 t_map_list	*lst_last(t_map_list *lst);
 void		parseMap(int fd, t_map **map);
 void		validMap(t_map **map);
-void		parse(char *cubFile);
+t_map		*parse(char *cubFile);
 t_format	*initStT(void);
 void		parseFormat(int fd, t_format **t);
 int			white_spaces_check(char *str);
