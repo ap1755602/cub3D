@@ -57,7 +57,7 @@ RESET = \033[0m
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(O) $(OBJ)
-	@$(CC) $(LIBRARIES) $(INCLUDES) $(OBJ) -o $(NAME) #$(FLAGS)
+	@$(CC) $(LIBRARIES) $(INCLUDES) $(OBJ) -o $(NAME) $(FLAGS)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
