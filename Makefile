@@ -10,16 +10,11 @@ LIBFT_DIR = ./libft/
 LIBFT_HEADER = $(LIBFT_DIR)includes/
 
 MLX = $(MLX_DIR)libmlx.a
-MLX_DIR = ./minilibx_opengl_20191021/
+MLX_DIR = ./minilibx/
 MLX_HEADER = $(MLX_DIR)
 
 HEADER_DIR = ./includes/
 HEADER =  $(addprefix $(HEADER_DIR), cub3D.h)
-
-
-
-
-
 
 G = game_algs/
 P = parser/
@@ -34,11 +29,6 @@ SRC_LIST = main.c \
 		   $Ggame_start.c \
 		   $Ggraphics.c \
 		   $Ginput.c
-
-
-
-
-
 
 SRC = $(SRC_DIR)$(SRC_LIST)
 

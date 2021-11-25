@@ -4,13 +4,16 @@
 int main (int argc, char*argv[])
 {
 	t_game	game;
-	t_map	*map;
 
 	if (argc == 2)
 	{
-		map = parse(argv[1]);
-		start_game(&game, map);
+		game.map = parse(argv[1]);
+		start_game(&game);
 		return (0);
 	}
 	terminate("Error");
 }
+// UP 126
+// DOWN 125
+// LEFT 123
+// RI 124
