@@ -3,7 +3,7 @@
 
 #include "cub3D.h"
 #include <math.h>
-
+#include <stdbool.h>
 
 enum e_keycode
 {
@@ -66,6 +66,14 @@ typedef struct s_coords
 	double	planeY;
 }				t_coords;
 
+typedef struct s_flags
+{
+	bool	w_key;
+	bool	a_key;
+	bool	s_key;
+	bool	d_key;
+}				t_flags;
+
 typedef struct s_game
 {
 	void			*mlx;
@@ -75,6 +83,7 @@ typedef struct s_game
 	t_map			*map;
 	t_dataRay		ray;
 	t_coords		coords;
+	t_flags			flags;
 }	t_game;
 
 void	start_game(t_game *game);
@@ -83,6 +92,12 @@ int		exit_game(t_game *game);
 int		ft_input(int key, t_game *game);
 int		ft_update(t_game *game);
 int		drawing_map(t_game *game);
+void	go_forward(t_coords *c, char **map);
+void	go_backward(t_coords *c, char **map);
+void	turn_right(t_coords *c);
+void	turn_left(t_coords *c);
+
+
 void	graphics(t_game *game);
 
 #endif

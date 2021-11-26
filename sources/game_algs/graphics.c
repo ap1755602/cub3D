@@ -150,9 +150,12 @@ void	graphics(t_game *game)
 		if(drawStart < 0) drawStart = 0;
 		int drawEnd = lineHeight / 2 + game->wndw_size.y / 2;
 		if(drawEnd >= game->wndw_size.y) drawEnd = game->wndw_size.y - 1;
-		draw_line(&game->img, x, drawStart, drawEnd, 0x00808080);
+		if (side == 1)
+			draw_line(&game->img, x, drawStart, drawEnd, 0x00808080 >> 1);
+		else
+			draw_line(&game->img, x, drawStart, drawEnd, 0x00808080);
 		draw_line(&game->img, x, 0, drawStart, 0x0033b5ff);
-		draw_line(&game->img, x, drawEnd, game->wndw_size.y - 1, 0x00ebe7ea);
+		draw_line(&game->img, x, drawEnd, game->wndw_size.y, 0x00ebe7ea);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx, game->window, game->img.img, 0, 0);
@@ -160,6 +163,14 @@ void	graphics(t_game *game)
 
 int	ft_update(t_game *game)
 {
+	if (game->flags.w_key == 1)
+		go_forward(&game->coords, game->map->m);
+	if (game->flags.s_key == 1)
+		go_backward(&game->coords, game->map->m);
+	if (game->flags.d_key == 1)
+		turn_right(&game->coords);
+	if (game->flags.a_key == 1)
+		turn_left(&game->coords);
 	graphics(game);
 	// (void )game; 
 	mlx_do_sync(game->mlx);

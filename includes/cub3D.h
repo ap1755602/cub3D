@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/23 01:16:31 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/26 10:27:30 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdbool.h>
+
+#define MOVE_SPEED 0.2
+#define ROTATE_SPEED 0.09
 
 typedef struct s_format
 {

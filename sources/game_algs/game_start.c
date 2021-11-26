@@ -2,8 +2,8 @@
 
 void	game_init(t_game *game)
 {
-	game->wndw_size.x = 640;
-	game->wndw_size.y = 480;
+	game->wndw_size.x = 1280;
+	game->wndw_size.y = 1024;
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx,
 			game->wndw_size.x,
@@ -14,7 +14,22 @@ void	game_init(t_game *game)
 									   &game->img.line_length, &game->img.endian);
 }
 
-// отрисовать 2д карту
+int key_unpress(int key, t_game *game)
+{
+	if (key == KEY_UP)
+		game->flags.w_key = 0;
+	if (key == KEY_DOWN)
+		game->flags.s_key = 0;
+	if (key == KEY_LEFT)
+		game->flags.a_key = 0;
+	if (key == KEY_RIGHT)
+		game->flags.d_key = 0;
+	if (key == ESC)
+		exit_game(game);
+	else
+		return (0);
+	return (1);
+}
 
 void	start_game(t_game *game)
 {
@@ -29,9 +44,14 @@ void	start_game(t_game *game)
 	game->coords.dirY = 0;
 	game->coords.planeX = 0;
 	game->coords.planeY = 0.66;
+	game->flags.a_key = 0;
+	game->flags.d_key = 0;
+	game->flags.s_key = 0;
+	game->flags.w_key = 0;
 	game_init(game);
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 0, ft_input, game);
+	mlx_hook(game->window, 3, 0, key_unpress, game);
 	// mlx_hook(game->window, 2, 0, ft_update, game);
 	mlx_loop_hook(game->mlx, ft_update, game);
 	mlx_loop(game->mlx);
