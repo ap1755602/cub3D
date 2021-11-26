@@ -47,13 +47,16 @@ void	setLstMap(int fd, t_map **map, char *str)
 static void	create2dMatrix(t_map **map)
 {
 	t_map_list	*last;
+	t_map_list	*lst;
+
 
 	last = lst_last((*map)->lst);
+	lst = (*map)->lst;
 	(*map)->m = (char **) malloc(sizeof (char *) * (last->strNum + 2));
-	while ((*map)->lst)
+	while (lst)
 	{
-		(*map)->m[(*map)->lst->strNum] = ft_strdup((*map)->lst->str);
-		(*map)->lst = (*map)->lst->next;
+		(*map)->m[lst->strNum] = ft_strdup(lst->str);
+		lst = lst->next;
 	}
 	(*map)->m[last->strNum + 1] = NULL;
 }
@@ -76,8 +79,8 @@ void parseMap(int fd, t_map **map)
 	validMap(map);
 	create2dMatrix(map);
 	//--------print_2d_matrix-------
-	int i = -1;
-	while ((*map)->m[++i])
-		printf("%s\n", (*map)->m[i]);
+//	int i = -1;
+//	while ((*map)->m[++i])
+//		printf("%s\n", (*map)->m[i]);
 
 }

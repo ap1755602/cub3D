@@ -10,36 +10,31 @@ LIBFT_DIR = ./libft/
 LIBFT_HEADER = $(LIBFT_DIR)includes/
 
 MLX = $(MLX_DIR)libmlx.a
-MLX_DIR = ./minilibx_opengl_20191021/
+MLX_DIR = ./minilibx/
 MLX_HEADER = $(MLX_DIR)
 
 HEADER_DIR = ./includes/
 HEADER =  $(addprefix $(HEADER_DIR), cub3D.h)
 
-
-
-
-
-
-
+G = game_algs/
+P = parser/
 SRC_DIR = ./sources/
 SRC_LIST = main.c \
-		   parseMap.c \
-		   lst.c\
-		   parseTextures.c \
-		   parse.c \
-		   validMap.c \
+		   $PparseMap.c \
+		   $Plst.c\
+		   $PparseTextures.c \
+		   $Pparse.c \
+		   $PvalidMap.c \
+		   $Gexit_game.c \
+		   $Ggame_start.c \
+		   $Ggraphics.c \
+		   $Ginput.c
 
+SRC = $(SRC_DIR)$(SRC_LIST)
 
-
-
-
-
-SRC = $(SRC_DIR)/$(SRC_LIST)
-
-OBJ_DIR = ./objects/
+O = ./objects/
 OBJ_LIST = $(patsubst %.c, %.o, $(SRC_LIST))
-OBJ	= $(addprefix $(OBJ_DIR), $(OBJ_LIST))
+OBJ	= $(addprefix $(O), $(OBJ_LIST))
 
 # COLORS
 
@@ -51,15 +46,18 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJ_DIR) $(OBJ)
-	@$(CC) $(LIBRARIES) $(INCLUDES) $(OBJ) -o $(NAME) #$(FLAGS)
+$(NAME): $(LIBFT) $(MLX) $(O) $(OBJ)
+	@$(CC) $(LIBRARIES) $(INCLUDES) $(OBJ) -o $(NAME) $(FLAGS)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
-$(OBJ_DIR):
-	@mkdir $(OBJ_DIR)
+$(O):
+	@[ -d $(O) ] || mkdir -p $(O)
+	@[ -d $(O)$(P) ] || mkdir -p $(O)$(P)
+	@[ -d $(O)$(G) ] || mkdir -p $(O)$(G)
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(HEADER)
+
+$(O)%.o : $(SRC_DIR)%.c $(HEADER)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
@@ -74,8 +72,8 @@ $(MLX):
 clean:
 	@$(MAKE) -sC $(LIBFT_DIR) clean
 	@$(MAKE) -sC $(MLX_DIR) clean
-	@rm -rf $(OBJ_DIR)
-	@echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
+	@rm -rf $(O)
+	@echo "$(NAME): $(RED)$(O) was deleted$(RESET)"
 	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 norm:
