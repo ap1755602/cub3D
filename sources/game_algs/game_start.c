@@ -32,7 +32,7 @@ void	start_game(t_game *game)
 	game_init(game);
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 0, ft_input, game);
-	mlx_hook(game->window, 2, 0, ft_update, game);
-	// mlx_loop_hook(game->mlx, ft_update, game);
+	// mlx_hook(game->window, 2, 0, ft_update, game);
+	mlx_loop_hook(game->mlx, ft_update, game);
 	mlx_loop(game->mlx);
 }

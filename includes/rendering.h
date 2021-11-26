@@ -81,7 +81,7 @@ void	start_game(t_game *game);
 //void	game_init(t_game *game);
 int		exit_game(t_game *game);
 int		ft_input(int key, t_game *game);
-int		ft_update(int key, t_game *game);
+int		ft_update(t_game *game);
 int		drawing_map(t_game *game);
 void	graphics(t_game *game);
 
