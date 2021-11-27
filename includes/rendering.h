@@ -66,6 +66,16 @@ typedef struct s_coords
 	double	planeY;
 }				t_coords;
 
+typedef struct s_texture
+{
+	t_vector	size;
+	int			size_line;
+	int			endian;
+	int			bpp;
+	void		*img;
+	char		*addr;
+}				t_texture;
+
 typedef struct s_flags
 {
 	bool	w_key;
@@ -84,12 +94,13 @@ typedef struct s_game
 	t_dataRay		ray;
 	t_coords		coords;
 	t_flags			flags;
+	t_texture		*texs;
 }	t_game;
 
 void	start_game(t_game *game);
 //void	game_init(t_game *game);
 int		exit_game(t_game *game);
-int		ft_input(int key, t_game *game);
+int		key_press(int key, t_game *game);
 int		ft_update(t_game *game);
 int		drawing_map(t_game *game);
 void	go_forward(t_coords *c, char **map);

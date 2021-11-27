@@ -42,7 +42,7 @@ void	go_backward(t_coords *c, char **map)
 		c->posY -= MOVE_SPEED * c->dirY;
 }
 
-int	ft_input(int key, t_game *game)
+int	key_press(int key, t_game *game)
 {
 	if (key == KEY_UP)
 		game->flags.w_key = 1;

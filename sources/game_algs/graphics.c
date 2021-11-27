@@ -70,6 +70,38 @@ void	draw_line(t_img *img, int x, int startDraw, int endDraw, int color)
 	}
 }
 
+void	apply_pixel(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + ((y * img->line_length) + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	get_color_channel(t_texture *tex, int x, int y, int i)
+{
+	char			*dst;
+	unsigned char	color;
+
+	dst = tex->addr + ((y * tex->size_line) + x * (tex->bpp / 8));
+	color = *(dst + i);
+	return (color);
+}
+
+int	get_color(t_texture *tex, int x, int y)
+{
+	int	T;
+	int	R;
+	int	G;
+	int	B;
+
+	T = get_color_channel(tex, x, y, 3);
+	R = get_color_channel(tex, x, y, 2);
+	G = get_color_channel(tex, x, y, 1);
+	B = get_color_channel(tex, x, y, 0);
+	return (T << 24 | R << 16 | G << 8 | B);
+}
+
 void	graphics(t_game *game)
 {
 	int x = 0;
@@ -150,10 +182,31 @@ void	graphics(t_game *game)
 		if(drawStart < 0) drawStart = 0;
 		int drawEnd = lineHeight / 2 + game->wndw_size.y / 2;
 		if(drawEnd >= game->wndw_size.y) drawEnd = game->wndw_size.y - 1;
-		if (side == 1)
-			draw_line(&game->img, x, drawStart, drawEnd, 0x00808080 >> 1);
-		else
-			draw_line(&game->img, x, drawStart, drawEnd, 0x00808080);
+
+      //texturing calculations
+		// int texNum = game->map->m[mapY][mapX] - 1; //1 subtracted from it so that texture 0 can be used!
+
+		//calculate value of wallX
+		double wallX; //where exactly the wall was hit
+		if (side == 0) wallX = game->coords.posY + perpWallDist * rayDirY;
+		else           wallX = game->coords.posX + perpWallDist * rayDirX;
+		wallX -= floor((wallX));
+
+		//x coordinate on the texture
+		int texX = (int)(wallX * (double)(texWidth));
+		if(side == 0 && rayDirX > 0) texX = texWidth - texX - 1;
+		if(side == 1 && rayDirY < 0) texX = texWidth - texX - 1;
+		double step = 1.0 * texHeight / lineHeight;
+		// Starting texture coordinate
+		double texPos = (drawStart - game->wndw_size.y / 2 + lineHeight / 2) * step;
+		for(int y = drawStart; y<drawEnd; y++)
+		{
+			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+			int texY = (int)texPos & (texHeight - 1);
+			texPos += step;
+			unsigned int color = get_color(&game->texs[0], texX, texY);
+			apply_pixel(&game->img, x, y, color);
+      	}
 		draw_line(&game->img, x, 0, drawStart, 0x0033b5ff);
 		draw_line(&game->img, x, drawEnd, game->wndw_size.y, 0x00ebe7ea);
 		x++;
@@ -172,7 +225,6 @@ int	ft_update(t_game *game)
 	if (game->flags.a_key == 1)
 		turn_left(&game->coords);
 	graphics(game);
-	// (void )game; 
 	mlx_do_sync(game->mlx);
 	return (1);
 }
