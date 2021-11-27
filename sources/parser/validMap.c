@@ -68,12 +68,12 @@ void validMap(t_map **map)
 	int			i;
 
 	i = 0;
-	if (!(*map)->lst)
+	if (!(*map)->lst || !(*map)->lst->next)
 		terminate("Error: have no map");
 	lst = (*map)->lst;
 	while (lst->next)
 	{
-		while (lst->str[i] == ' ' || lst->str[i] == '1')
+		while (lst->str[i] == ' ' || lst->str[i] == '1' || lst->str[i] == '\t')
 			i++;
 		while (lst->str[i])
 		{

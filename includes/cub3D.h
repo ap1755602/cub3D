@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/26 10:27:30 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/27 11:29:11 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		parseMap(int fd, t_map **map);
 void		validMap(t_map **map);
 t_map		*parse(char *cubFile);
 t_format	*initStT(void);
-void		parseFormat(int fd, t_format **t);
+char		*parseFormat(int fd, t_format **t);
 int			white_spaces_check(char *str);
 
 #endif

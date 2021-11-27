@@ -65,6 +65,14 @@ void parseMap(int fd, t_map **map)
 {
 	char	*currStr;
 
+
+	// if (!white_spaces_check(str))
+	// 	currStr = str;
+	// else
+	// {
+	// 	free (str);
+	// 	str = NULL;
+	// }
 	while(get_next_line(fd, &currStr))
 	{
 		if (white_spaces_check(currStr))
@@ -79,8 +87,8 @@ void parseMap(int fd, t_map **map)
 	validMap(map);
 	create2dMatrix(map);
 	//--------print_2d_matrix-------
-//	int i = -1;
-//	while ((*map)->m[++i])
-//		printf("%s\n", (*map)->m[i]);
+	int i = -1;
+	while ((*map)->m[++i])
+		printf("%s\n", (*map)->m[i]);
 
 }

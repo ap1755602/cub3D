@@ -121,13 +121,13 @@ static void setFormat(char *str, t_format **t)
 		terminate(ft_strjoin("Error: unrecognizable format: ", str));
 }
 
-void parseFormat(int fd, t_format **t)
+char *parseFormat(int fd, t_format **t)
 {
 	int	counter;
 	char *currStr;
 
 	counter = 6;
-	while(get_next_line(fd, &currStr) && counter)
+	while(counter && get_next_line(fd, &currStr))
 	{
 		if (!ft_strncmp(currStr, "\0", 1))
 		{
@@ -148,6 +148,6 @@ void parseFormat(int fd, t_format **t)
 	printf("C %d\n", (*t)->C);
 	printf("CC %d\n", (*t)->CC);
 	printf("CCC %d\n\n", (*t)->CCC);
-
+	return (currStr);
 }
 
