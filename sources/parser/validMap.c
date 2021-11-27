@@ -73,7 +73,7 @@ void validMap(t_map **map)
 	lst = (*map)->lst;
 	while (lst->next)
 	{
-		while (lst->str[i] == ' ' || lst->str[i] == '1' || lst->str[i] == '\t')
+		while (lst->str[i] == ' ' || lst->str[i] == '1')
 			i++;
 		while (lst->str[i])
 		{
@@ -102,5 +102,4 @@ void validMap(t_map **map)
 	}
 	if (!(*map)->player)
 		terminate("Error: player is not set");
-	// проверка на плеера
 }

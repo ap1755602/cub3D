@@ -65,14 +65,6 @@ void parseMap(int fd, t_map **map)
 {
 	char	*currStr;
 
-
-	// if (!white_spaces_check(str))
-	// 	currStr = str;
-	// else
-	// {
-	// 	free (str);
-	// 	str = NULL;
-	// }
 	while(get_next_line(fd, &currStr))
 	{
 		if (white_spaces_check(currStr))

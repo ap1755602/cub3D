@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/27 11:29:11 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/27 12:41:10 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct s_format
 	char *WE;
 	char *EA;
 	int  F;
-	int FF;
-	int FFF;
+	// int FF;
+	// int FFF;
 //	char *C;
 	int C;
-	int CC;
-	int CCC;
+	// int CC;
+	// int CCC;
 }	t_format;
 
 typedef struct s_map_list
@@ -76,7 +76,7 @@ void		parseMap(int fd, t_map **map);
 void		validMap(t_map **map);
 t_map		*parse(char *cubFile);
 t_format	*initStT(void);
-char		*parseFormat(int fd, t_format **t);
+void		parseFormat(int fd, t_format **t);
 int			white_spaces_check(char *str);
 
 #endif
