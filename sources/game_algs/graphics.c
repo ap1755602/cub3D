@@ -237,9 +237,13 @@ int	ft_update(t_game *game)
 	if (game->flags.s_key == 1)
 		go_backward(&game->coords, game->map->m);
 	if (game->flags.d_key == 1)
-		turn_right(&game->coords);
+		go_right(&game->coords, game->map->m);
 	if (game->flags.a_key == 1)
+		go_left(&game->coords, game->map->m);
+	if (game->flags.left_key == 1)
 		turn_left(&game->coords);
+	if (game->flags.right_key == 1)
+		turn_right(&game->coords);
 	graphics(game);
 	mlx_do_sync(game->mlx);
 	return (1);

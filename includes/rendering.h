@@ -7,10 +7,12 @@
 
 enum e_keycode
 {
-	KEY_UP = 13,
-	KEY_DOWN = 1,
-	KEY_LEFT = 0,
-	KEY_RIGHT = 2,
+	KEY_W = 13,
+	KEY_S = 1,
+	KEY_A = 0,
+	KEY_D = 2,
+	KEY_RIGHT = 124,
+	KEY_LEFT = 123,
 	ESC = 53
 };
 
@@ -82,6 +84,8 @@ typedef struct s_flags
 	bool	a_key;
 	bool	s_key;
 	bool	d_key;
+	bool	right_key;
+	bool	left_key;
 }				t_flags;
 
 typedef struct s_game
@@ -107,6 +111,8 @@ void	go_forward(t_coords *c, char **map);
 void	go_backward(t_coords *c, char **map);
 void	turn_right(t_coords *c);
 void	turn_left(t_coords *c);
+void	go_left(t_coords *c, char **map);
+void	go_right(t_coords *c, char **map);
 
 
 void	graphics(t_game *game);
