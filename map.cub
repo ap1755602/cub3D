@@ -3,12 +3,15 @@
 
 
 
-NO ./1.xpm
+NO ./imgs/brick1.xpm
 
-SO       ./2.xpm
 
-WE ./1.xpm
-EA          ./3.xpm
+
+
+SO       ./imgs/trap.xpm
+
+WE ./imgs/brick3.xpm
+EA          ./imgs/brick4.xpm
 
 F 50,10,15
 C 100,90,200

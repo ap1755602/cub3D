@@ -82,6 +82,8 @@ void	plane_init(t_coords *c, t_player *p)
 void	init_texture(t_game *game, t_texture *tex, char *path)
 {
 	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->size.x, &tex->size.y);
+	if (!tex->img)
+		terminate("I'M GAY!");
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
 }
 
@@ -96,18 +98,14 @@ void	start_game(t_game *game)
 	plane_init(&game->coords, game->map->player);
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));
-	// init_texture(game, &game->texs[0], "./imgs/brick1.xpm");
 	game_init(game);
-	// game->texs[0].img = mlx_xpm_file_to_image(game->mlx, "./imgs/brick1.xpm", &game->texs[0].size.x, &game->texs[0].size.y);
-	// game->texs[0].addr = mlx_get_data_addr(game->texs[0].img, &game->texs[0].bpp, &game->texs[0].size_line, &game->texs[0].endian);
-	init_texture(game, &game->texs[0], "./imgs/brick1.xpm");
-	init_texture(game, &game->texs[1], "./imgs/brick2.xpm");
-	init_texture(game, &game->texs[2], "./imgs/brick3.xpm");
-	init_texture(game, &game->texs[3], "./imgs/brick4.xpm");
+	init_texture(game, &game->texs[0], game->map->format->EA);
+	init_texture(game, &game->texs[1], game->map->format->NO);
+	init_texture(game, &game->texs[2], game->map->format->SO);
+	init_texture(game, &game->texs[3], game->map->format->WE);
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 0, key_press, game);
 	mlx_hook(game->window, 3, 0, key_unpress, game);
-	// mlx_hook(game->window, 2, 0, ft_update, game);
 	mlx_loop_hook(game->mlx, ft_update, game);
 	mlx_loop(game->mlx);
 }
