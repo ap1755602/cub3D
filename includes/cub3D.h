@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 16:52:36 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/28 18:44:58 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define MOVE_SPEED 0.2
 # define ROT_SPEED 0.09
+# define texWidth 64
+# define texHeight 64
 
 typedef struct s_format
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_start.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/28 19:02:43 by cjoanne           #+#    #+#             */
+/*   Updated: 2021/11/28 19:05:48 by cjoanne          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rendering.h"
 
 void	game_init(t_game *game, t_img *img)
@@ -11,7 +23,7 @@ void	game_init(t_game *game, t_img *img)
 			"iceCube3D");
 	img->img = mlx_new_image(game->mlx, game->wndw_size.x, game->wndw_size.y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
-									&img->line_length, &img->endian);
+			&img->line_length, &img->endian);
 }
 
 void	dir_init(t_coords *c, t_player *p)
@@ -64,13 +76,15 @@ void	plane_init(t_coords *c, t_player *p)
 
 void	init_texture(t_game *game, t_texture *tex, char *path)
 {
-	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->size.x, &tex->size.y);
+	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->size.x,
+			&tex->size.y);
 	if (!tex->img)
 	{
 		free(game->texs);
 		terminate("Error: Image doesn't exist");
 	}
-	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
+	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line,
+			&tex->endian);
 }
 
 void	init_key_flags(t_flags *flags)
@@ -87,7 +101,6 @@ void	start_game(t_game *game)
 {
 	game->coords.posX = game->map->player->x + 0.5;
 	game->coords.posY = game->map->player->y + 0.5;
-
 	plane_init(&game->coords, game->map->player);
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));

@@ -95,7 +95,6 @@ typedef struct s_game
 	t_vector		wndw_size;
 	t_img 			img;
 	t_map			*map;
-	t_dataRay		ray;
 	t_coords		coords;
 	t_flags			flags;
 	t_texture		*texs;
@@ -115,7 +114,16 @@ void	turn_left(t_coords *c);
 void	go_left(t_coords *c, char **map);
 void	go_right(t_coords *c, char **map);
 
-
 void	graphics(t_game *game);
+void	ray_calcs(t_game *game, t_dataRay *r, int x);
+void	step_and_side_dist_calcs(t_game *game, t_dataRay *r);
+void	dda_algorithm(t_game *game, t_dataRay *r);
+void	lines_calcs(t_game *game, t_dataRay *r);
+void	which_wall(t_game *game, t_dataRay *r);
+void	assign_texture_pixels(t_game *game, t_dataRay *r, int x);
 
+void	apply_pixel(t_img *img, int x, int y, int color);
+int		get_color_channel(t_texture *tex, int x, int y, int i);
+int		get_color(t_texture *tex, int x, int y);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 #endif

@@ -6,7 +6,7 @@
 #    By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 13:40:04 by frodney           #+#    #+#              #
-#    Updated: 2021/11/28 16:56:12 by cjoanne          ###   ########.fr        #
+#    Updated: 2021/11/28 19:32:38 by cjoanne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,9 @@ SRC_LIST = main.c \
 		   $Ggraphics.c \
 		   $Ginput.c \
 		   $Gmoving_math.c \
-		   $Gmoving_math2.c
+		   $Gmoving_math2.c \
+		   $Gupdate.c \
+		   $Ggraphics_utils.c
 
 SRC = $(SRC_DIR)$(SRC_LIST)
 
