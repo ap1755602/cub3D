@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 13:39:42 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 13:39:43 by frodney          ###   ########.fr       */
+/*   Created: 2021/11/28 14:11:56 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 14:12:12 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ int	white_spaces_check(char *str)
 		if (*str == ' ')
 		{
 			str++;
-			continue;
+			continue ;
 		}
 		else
 			return (0);
 	}
+	free (str);
+	str = NULL;
 	return (1);
 }
 
@@ -51,16 +53,16 @@ static void	udlr(t_map_list *lst, int x, int dir)
 				x++;
 		}
 		else if (lst->str[x] == 'N' || lst->str[x] == 'S' || \
-			lst->str[x] == 'E' || lst->str[x] == 'W' ||  lst->str[x] == '1')
+			lst->str[x] == 'E' || lst->str[x] == 'W' || lst->str[x] == '1')
 			return ;
 		else
 			terminate("Error");
 	}
 }
 
-static int  closenessOfFreeSpace(t_map_list *lst, int x) // туда сюда попрыгать
+static int	closeness_of_free_space(t_map_list *lst, int x)
 {
-	if(!lst)
+	if (!lst)
 		return (0);
 	udlr(lst, x, UP);
 	udlr(lst, x, DOWN);
@@ -69,41 +71,33 @@ static int  closenessOfFreeSpace(t_map_list *lst, int x) // туда сюда п
 	return (1);
 }
 
-static void	setPlayerSt(t_map **map, int y, int x, char dir)
+static void	valid_map_str(t_map_list *lst, t_map **map)
 {
-	(*map)->player = (t_player *)malloc(sizeof (t_player));
-	(*map)->player->direction = dir;
-	(*map)->player->x = x;
-	(*map)->player->y = y;
-}
-
-void f(t_map_list *lst, t_map **map)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (lst->str[i])
 	{
-		if (lst->str[i] == '0' && closenessOfFreeSpace(lst, i))
+		if (lst->str[i] == '0' && closeness_of_free_space(lst, i))
 			i++;
 		else if ((lst->str[i] == 'N' || lst->str[i] == 'S' || \
 			lst->str[i] == 'E' || lst->str[i] == 'W') && !((*map)->player))
 		{
-			setPlayerSt(map, lst->strNum, i, lst->str[i]);
-			closenessOfFreeSpace(lst, i);
+			set_player_st(map, lst->str_num, i, lst->str[i]);
+			closeness_of_free_space(lst, i);
 			i++;
 		}
 		else if (lst->str[i] == '1' || lst->str[i] == ' ')
 		{
 			i++;
-			continue;
+			continue ;
 		}
 		else
 			terminate("Error");
 	}
 }
 
-void validMap(t_map **map)
+void	valid_map(t_map **map)
 {
 	t_map_list	*lst;
 
@@ -112,7 +106,7 @@ void validMap(t_map **map)
 	lst = (*map)->lst;
 	while (lst->next)
 	{
-		f(lst, map);
+		valid_map_str(lst, map);
 		lst = lst->next;
 	}
 	if (!(*map)->player)

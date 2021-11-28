@@ -6,29 +6,29 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 13:39:54 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 13:39:55 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/28 14:15:21 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int		getRGB(char *red, char *green, char *blue)
+static int	get_rgb(char *red, char *green, char *blue)
 {
-	int R;
-	int G;
-	int B;
+	int	r;
+	int	g;
+	int	b;
 
-	R = ft_atoi(red);
-	G = ft_atoi(green);
-	B = ft_atoi(blue);
-	return ((((R * 256) + G) * 256) + B);
+	r = ft_atoi(red);
+	g = ft_atoi(green);
+	b = ft_atoi(blue);
+	return ((((r * 256) + g) * 256) + b);
 }
-void    setValueFC(char *str, int *i)
+
+void	set_value_f_c(char *str, int *i)
 {
 	char	*green;
 	char	*blue;
 	char	*red;
-
 
 	if (*i != -1)
 		terminate("Error");
@@ -46,7 +46,7 @@ void    setValueFC(char *str, int *i)
 	++blue;
 	if (!ft_isnum(red) || !ft_isnum(green) || !ft_isnum(blue))
 		terminate("Error");
-	*i = getRGB(red, green, blue);
+	*i = get_rgb(red, green, blue);
 	free (red);
 	free (str);
 }

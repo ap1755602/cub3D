@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 13:39:31 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 13:39:32 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/28 13:50:26 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	lstadd_back(t_map_list **lst, t_map_list *new)
 	new->prev = temp;
 }
 
-t_map_list	*lst_new(char *str, int strNum)
+t_map_list	*lst_new(char *str, int str_num)
 {
 	t_map_list	*i;
 
@@ -44,7 +44,7 @@ t_map_list	*lst_new(char *str, int strNum)
 	if (!i)
 		return (NULL);
 	i->str = str;
-	i->strNum = strNum;
+	i->str_num = str_num;
 	i->next = NULL;
 	i->prev = NULL;
 	return (i);

@@ -5,92 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 13:39:40 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 13:39:41 by frodney          ###   ########.fr       */
+/*   Created: 2021/11/28 14:09:23 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 14:10:02 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-t_map	*initMapS(void)
+t_map	*init_map_s(void)
 {
 	t_map	*map;
 
-	map = (t_map *)malloc(sizeof(t_map)); // free
+	map = (t_map *)malloc(sizeof(t_map));
 	map->player = NULL;
 	map->lst = NULL;
 	return (map);
 }
 
-
-void	setLstMap(int fd, t_map **map, char *str)
+void	set_lst_map(int fd, t_map **map, char *str)
 {
-	char		*currStr;
+	char		*curr_str;
 	t_map_list	*new;
-	int 		strNum;
+	int			str_num;
 
-	strNum = 1;
+	str_num = 1;
 	new = lst_new(str, 0);
 	lstadd_back(&(*map)->lst, new);
-	while(get_next_line(fd, &currStr))
+	while (get_next_line(fd, &curr_str))
 	{
-		if (white_spaces_check(currStr))
-		{
-			free (currStr);
-			currStr = NULL;
-			break;
-		}
+		if (white_spaces_check(curr_str))
+			break ;
 		else
 		{
-			new = lst_new(currStr, strNum);
+			new = lst_new(curr_str, str_num);
 			lstadd_back(&(*map)->lst, new);
-			strNum++;
+			str_num++;
 		}
 	}
-	if (currStr)
+	if (curr_str)
 	{
-		new = lst_new(currStr, strNum);
+		new = lst_new(curr_str, str_num);
 		lstadd_back(&(*map)->lst, new);
 	}
 }
 
-static void	create2dMatrix(t_map **map)
+static void	create_2d_matrix(t_map **map)
 {
 	t_map_list	*last;
 	t_map_list	*lst;
 
-
 	last = lst_last((*map)->lst);
 	lst = (*map)->lst;
-	(*map)->m = (char **) malloc(sizeof (char *) * (last->strNum + 2));
+	(*map)->m = (char **) malloc(sizeof (char *) * (last->str_num + 2));
 	while (lst)
 	{
-		(*map)->m[lst->strNum] = ft_strdup(lst->str);
+		(*map)->m[lst->str_num] = ft_strdup(lst->str);
 		lst = lst->next;
 	}
-	(*map)->m[last->strNum + 1] = NULL;
+	(*map)->m[last->str_num + 1] = NULL;
 }
 
-void parseMap(int fd, t_map **map)
+void	parse_map(int fd, t_map **map)
 {
-	char	*currStr;
+	char	*curr_str;
 
-	while(get_next_line(fd, &currStr))
+	while (get_next_line(fd, &curr_str))
 	{
-		if (white_spaces_check(currStr))
-		{
-			free(currStr);
-			continue;
-		}
+		if (white_spaces_check(curr_str))
+			continue ;
 		else
-			break;
+			break ;
 	}
-	setLstMap(fd, map, currStr);
-	validMap(map);
-	create2dMatrix(map);
-	//--------print_2d_matrix-------
-	// int i = -1;
-	// while ((*map)->m[++i])
-	// 	printf("%s\n", (*map)->m[i]);
-
+	set_lst_map(fd, map, curr_str);
+	valid_map(map);
+	create_2d_matrix(map);
 }
