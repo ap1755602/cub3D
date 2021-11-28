@@ -13,7 +13,3 @@ int main (int argc, char*argv[])
 	}
 	terminate("Error");
 }
-// UP 126
-// DOWN 125
-// LEFT 123
-// RI 124

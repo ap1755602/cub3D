@@ -87,28 +87,36 @@ void	init_texture(t_game *game, t_texture *tex, char *path)
 {
 	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->size.x, &tex->size.y);
 	if (!tex->img)
-		terminate("I'M GAY!");
+	{
+		free(game->texs);
+		terminate("Image doesn't exist");
+	}
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
+}
+
+void	init_key_flags(t_flags *flags)
+{
+	flags->a_key = 0;
+	flags->d_key = 0;
+	flags->s_key = 0;
+	flags->w_key = 0;
+	flags->left_key = 0;
+	flags->right_key = 0;
 }
 
 void	start_game(t_game *game)
 {
 	game->coords.posX = game->map->player->x + 0.5;
 	game->coords.posY = game->map->player->y + 0.5;
-	game->flags.a_key = 0;
-	game->flags.d_key = 0;
-	game->flags.s_key = 0;
-	game->flags.w_key = 0;
-	game->flags.left_key = 0;
-	game->flags.right_key = 0;
+
 	plane_init(&game->coords, game->map->player);
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));
 	game_init(game);
-	init_texture(game, &game->texs[0], game->map->format->WE);
-	init_texture(game, &game->texs[1], game->map->format->EA);
-	init_texture(game, &game->texs[2], game->map->format->NO);
-	init_texture(game, &game->texs[3], game->map->format->SO);
+	init_texture(game, &game->texs[0], game->map->format->ea);
+	init_texture(game, &game->texs[1], game->map->format->we);
+	init_texture(game, &game->texs[2], game->map->format->no);
+	init_texture(game, &game->texs[3], game->map->format->so);
 	game->map->m[game->map->player->y][game->map->player->x] = '0';
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 0, key_press, game);

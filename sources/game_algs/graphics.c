@@ -193,6 +193,8 @@ void	graphics(t_game *game)
 		wallX -= floor((wallX));
 
 		//x coordinate on the texture
+		int texWidth = 64;
+		int texHeight = 64;
 		int texX = (int)(wallX * (double)(texWidth));
 		if(side == 0 && rayDirX > 0) texX = texWidth - texX - 1;
 		if(side == 1 && rayDirY < 0) texX = texWidth - texX - 1;
@@ -222,8 +224,8 @@ void	graphics(t_game *game)
 				apply_pixel(&game->img, x, y, color);
 			}
       	}
-		draw_line(&game->img, x, 0, drawStart, game->map->format->C);
-		draw_line(&game->img, x, drawEnd, game->wndw_size.y, game->map->format->F);
+		draw_line(&game->img, x, 0, drawStart, game->map->format->c);
+		draw_line(&game->img, x, drawEnd, game->wndw_size.y, game->map->format->f);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx, game->window, game->img.img, 0, 0);

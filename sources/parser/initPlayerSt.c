@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   initPlayerSt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 14:32:36 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:32:58 by frodney          ###   ########.fr       */
+/*   Created: 2021/11/28 13:48:23 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 13:50:47 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3D.h"
 
-void	ft_bzero(void *s, size_t n)
+void	set_player_st(t_map **map, int y, int x, char dir)
 {
-	size_t	i;
-	char	*str;
-
-	str = (char *) s;
-	i = 0;
-	while (i < n)
-	{
-		str[i] = 0;
-		i++;
-	}
+	(*map)->player = (t_player *)malloc(sizeof (t_player));
+	(*map)->player->direction = dir;
+	(*map)->player->x = x;
+	(*map)->player->y = y;
 }

@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:53:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/15 20:04:05 by                  ###   ########.fr       */
+/*   Updated: 2021/11/28 14:31:34 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 int					count_words(char const *s, char c);
 int					get_next_line(int fd, char **line);
 char				*ft_strndup(const char *s, size_t n);
-void 				terminate(char *error_message);
+void				terminate(char *error_message);
 char				*join_str(char const *s1, char const *s2);
 int					has_return(char *str);
+int					ft_isnum(char *str);
 
 #endif

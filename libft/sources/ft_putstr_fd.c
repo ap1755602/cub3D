@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 12:24:21 by frodney           #+#    #+#             */
-/*   Updated: 2021/04/25 19:27:55 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/28 14:34:17 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	ft_putstr_fd(char const *s, int fd)
 	if (s)
 	{
 		while (s[i] != '\0')
-			ft_putchar_fd(s[i], fd), i++;
+		{	
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/28 13:39:31 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 13:50:26 by frodney          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 t_map_list	*lst_last(t_map_list *lst)
@@ -22,10 +34,9 @@ void	lstadd_back(t_map_list **lst, t_map_list *new)
 	temp = lst_last((*lst)->head);
 	temp->next = new;
 	new->prev = temp;
-//	printf("str prev %s\n", new->prev->str);
 }
 
-t_map_list	*lst_new(char *str, int strNum)
+t_map_list	*lst_new(char *str, int str_num)
 {
 	t_map_list	*i;
 
@@ -33,7 +44,7 @@ t_map_list	*lst_new(char *str, int strNum)
 	if (!i)
 		return (NULL);
 	i->str = str;
-	i->strNum = strNum;
+	i->str_num = str_num;
 	i->next = NULL;
 	i->prev = NULL;
 	return (i);

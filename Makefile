@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: frodney <frodney@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/28 13:40:04 by frodney           #+#    #+#              #
+#    Updated: 2021/11/28 13:48:04 by frodney          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
 
 CC = gcc
@@ -22,6 +34,8 @@ SRC_DIR = ./sources/
 SRC_LIST = main.c \
 		   $PparseMap.c \
 		   $Plst.c\
+		   $PinitPlayerSt.c \
+		   $PparseColors.c \
 		   $PparseTextures.c \
 		   $Pparse.c \
 		   $PvalidMap.c \

@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 14:32:36 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:32:58 by frodney          ###   ########.fr       */
+/*   Created: 2021/11/28 14:33:15 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 14:33:23 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_isnum(char *str)
 {
-	size_t	i;
-	char	*str;
-
-	str = (char *) s;
-	i = 0;
-	while (i < n)
+	while (*str)
 	{
-		str[i] = 0;
-		i++;
+		if (*str > 47 && *str < 58)
+		{
+			++str;
+			continue ;
+		}
+		else
+			return (0);
 	}
+	return (1);
 }
