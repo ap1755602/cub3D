@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/28 14:34:47 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 14:35:00 by frodney          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-
-char		*join_str(char const *s1, char const *s2)
+char	*join_str(char const *s1, char const *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -23,9 +34,9 @@ char		*join_str(char const *s1, char const *s2)
 	return (rtn);
 }
 
-int			has_return(char *str) ////////////////////////////
+int	has_return(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
