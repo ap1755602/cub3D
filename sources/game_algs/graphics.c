@@ -208,18 +208,19 @@ void	graphics(t_game *game)
 			if (side == 0)
 			{
 				if (stepX == 1)
-					color = get_color(&game->texs[0], texX, texY);
-				else
 					color = get_color(&game->texs[1], texX, texY);
+				else
+					color = get_color(&game->texs[0], texX, texY);
+				apply_pixel(&game->img, x, y, color);
 			}
-			else
+			if (side == 1)
 			{
 				if (stepY == 1)
 					color = get_color(&game->texs[2], texX, texY);
 				else
 					color = get_color(&game->texs[3], texX, texY);
+				apply_pixel(&game->img, x, y, color);
 			}
-			apply_pixel(&game->img, x, y, color);
       	}
 		draw_line(&game->img, x, 0, drawStart, game->map->format->C);
 		draw_line(&game->img, x, drawEnd, game->wndw_size.y, game->map->format->F);

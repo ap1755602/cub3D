@@ -105,8 +105,8 @@ void	start_game(t_game *game)
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));
 	game_init(game);
-	init_texture(game, &game->texs[0], game->map->format->EA);
-	init_texture(game, &game->texs[1], game->map->format->WE);
+	init_texture(game, &game->texs[0], game->map->format->WE);
+	init_texture(game, &game->texs[1], game->map->format->EA);
 	init_texture(game, &game->texs[2], game->map->format->NO);
 	init_texture(game, &game->texs[3], game->map->format->SO);
 	game->map->m[game->map->player->y][game->map->player->x] = '0';
