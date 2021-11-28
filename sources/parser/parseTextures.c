@@ -9,14 +9,8 @@ t_format *initStT(void)
 	t->SO = NULL;
 	t->WE = NULL;
 	t->EA = NULL;
-//	t->F = NULL;
-//	t->C = NULL;
 	t->F = -1;
-	// t->FF = -1;
-	// t->FFF = -1;
 	t->C = -1;
-	// t->CC = -1;
-	// t->CCC = -1;
 	return (t);
 }
 
@@ -38,25 +32,12 @@ static void setValueTexture(char *str, char **value)
 		terminate(ft_strjoin("Error: double trying set val: ", str));
 	ptr = ft_strchr(str, ' ');
 	trimed = ft_strtrim(ptr, " "); // ! malloc
-	if (!ptr || !trimed || ft_strncmp(trimed, "./", 2))
-		terminate(ft_strjoin("Error: where is './'? ", trimed));
+	if (!ptr || !trimed) // || ft_strncmp(trimed, "./", 2))
+		terminate(ft_strjoin("Error: non valid texture file", trimed));
 	// add here check . / after ./
 	checkFileFormat(trimed);
 	*value = trimed;
 }
-
-//static void setValueFC(char *str, char **value) // set alpha to i and then to hex
-//{
-//	char *ptr;
-//	char *trimed;
-//
-//	if (*value)
-//		terminate(ft_strjoin("Error: double trying set val: ", str));
-//	ptr = ft_strchr(str, ' ');
-//	trimed = ft_strtrim(ptr, " ");
-//	*value = trimed;
-//	free (str);
-//}
 
 int ft_isnum(char *str)
 {
@@ -77,7 +58,7 @@ int		getRGB(int R, int G, int B)
 {
 	return ((((R * 256) + G) * 256) + B);
 }
-static void setValueFC(char *str, int *i)//, int *ii, int *iii) // set alpha to i and then to hex
+static void setValueFC(char *str, int *i)
 {
 	char	*ptr;
 	char	*ptr1;
@@ -114,7 +95,7 @@ static void setFormat(char *str, t_format **t)
 {
 	if (!ft_strncmp(str, "NO ", 3))
 	{
-		setValueTexture(str, &(*t)->NO); // ()
+		setValueTexture(str, &(*t)->NO);
 	}
 	else if (!ft_strncmp(str, "SO ", 3))
 		setValueTexture(str, &(*t)->SO);
@@ -123,9 +104,9 @@ static void setFormat(char *str, t_format **t)
 	else if (!ft_strncmp(str, "EA ", 3))
 		setValueTexture(str, &(*t)->EA);
 	else if (!ft_strncmp(str, "F ", 2))
-		setValueFC(str, &(*t)->F); // &(*t)->FF, &(*t)->FFF);
+		setValueFC(str, &(*t)->F);
 	else if (!ft_strncmp(str, "C ", 2))
-		setValueFC(str, &(*t)->C); //, &(*t)->CC, &(*t)->CCC);
+		setValueFC(str, &(*t)->C); 
 	else
 		terminate(ft_strjoin("Error: unrecognizable format: ", str));
 }
@@ -152,10 +133,6 @@ static void setFormat(char *str, t_format **t)
 	printf("WE %s\n", (*t)->WE);
 	printf("EA %s\n", (*t)->EA);
 	printf("F %d\n", (*t)->F);
-	// printf("FF %d\n", (*t)->FF);
-	// printf("FFF %d\n", (*t)->FFF);
 	printf("C %d\n", (*t)->C);
-	// printf("CC %d\n", (*t)->CC);
-	// printf("CCC %d\n\n", (*t)->CCC);
 }
 

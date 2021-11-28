@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/27 12:41:10 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/27 13:43:38 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,12 @@
 
 typedef struct s_format
 {
-	char *NO;
-	char *SO;
-	char *WE;
-	char *EA;
-	int  F;
-	// int FF;
-	// int FFF;
-//	char *C;
-	int C;
-	// int CC;
-	// int CCC;
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
+	int		F;
+	int		C;
 }	t_format;
 
 typedef struct s_map_list

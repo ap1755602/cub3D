@@ -41,9 +41,7 @@ void	setLstMap(int fd, t_map **map, char *str)
 		lstadd_back(&(*map)->lst, new);
 	}
 }
-/*
- * пропускаем пустые строки перед картой и строки с пробелами
- */
+
 static void	create2dMatrix(t_map **map)
 {
 	t_map_list	*last;
