@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: frodney <frodney@student.42.fr>            +#+  +:+       +#+         #
+#    By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 13:40:04 by frodney           #+#    #+#              #
-#    Updated: 2021/11/28 13:48:04 by frodney          ###   ########.fr        #
+#    Updated: 2021/11/28 16:56:12 by cjoanne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,11 @@ SRC_LIST = main.c \
 		   $PparseTextures.c \
 		   $Pparse.c \
 		   $PvalidMap.c \
-		   $Gexit_game.c \
 		   $Ggame_start.c \
 		   $Ggraphics.c \
-		   $Ginput.c
+		   $Ginput.c \
+		   $Gmoving_math.c \
+		   $Gmoving_math2.c
 
 SRC = $(SRC_DIR)$(SRC_LIST)
 

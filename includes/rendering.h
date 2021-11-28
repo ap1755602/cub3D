@@ -102,13 +102,14 @@ typedef struct s_game
 }	t_game;
 
 void	start_game(t_game *game);
-//void	game_init(t_game *game);
 int		exit_game(t_game *game);
+int		key_unpress(int key, t_game *game);
 int		key_press(int key, t_game *game);
 int		ft_update(t_game *game);
 int		drawing_map(t_game *game);
 void	go_forward(t_coords *c, char **map);
 void	go_backward(t_coords *c, char **map);
+
 void	turn_right(t_coords *c);
 void	turn_left(t_coords *c);
 void	go_left(t_coords *c, char **map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:32:16 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/28 16:52:36 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdbool.h>
 
 # define MOVE_SPEED 0.2
-# define ROTATE_SPEED 0.09
+# define ROT_SPEED 0.09
 
 typedef struct s_format
 {

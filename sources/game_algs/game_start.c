@@ -1,6 +1,6 @@
 #include "rendering.h"
 
-void	game_init(t_game *game)
+void	game_init(t_game *game, t_img *img)
 {
 	game->wndw_size.x = 640;
 	game->wndw_size.y = 480;
@@ -9,30 +9,9 @@ void	game_init(t_game *game)
 			game->wndw_size.x,
 			game->wndw_size.y,
 			"iceCube3D");
-	game->img.img = mlx_new_image(game->mlx, game->wndw_size.x, game->wndw_size.y);
-	game->img.addr = mlx_get_data_addr(game->img.img, &game->img.bits_per_pixel,
-									   &game->img.line_length, &game->img.endian);
-}
-
-int key_unpress(int key, t_game *game)
-{
-	if (key == KEY_W)
-		game->flags.w_key = 0;
-	if (key == KEY_S)
-		game->flags.s_key = 0;
-	if (key == KEY_A)
-		game->flags.a_key = 0;
-	if (key == KEY_D)
-		game->flags.d_key = 0;
-	if (key == KEY_LEFT)
-		game->flags.left_key = 0;
-	if (key == KEY_RIGHT)
-		game->flags.right_key = 0;
-	if (key == ESC)
-		exit_game(game);
-	else
-		return (0);
-	return (1);
+	img->img = mlx_new_image(game->mlx, game->wndw_size.x, game->wndw_size.y);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+									&img->line_length, &img->endian);
 }
 
 void	dir_init(t_coords *c, t_player *p)
@@ -89,7 +68,7 @@ void	init_texture(t_game *game, t_texture *tex, char *path)
 	if (!tex->img)
 	{
 		free(game->texs);
-		terminate("Image doesn't exist");
+		terminate("Error: Image doesn't exist");
 	}
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line, &tex->endian);
 }
@@ -112,7 +91,7 @@ void	start_game(t_game *game)
 	plane_init(&game->coords, game->map->player);
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));
-	game_init(game);
+	game_init(game, &game->img);
 	init_texture(game, &game->texs[0], game->map->format->ea);
 	init_texture(game, &game->texs[1], game->map->format->we);
 	init_texture(game, &game->texs[2], game->map->format->no);
