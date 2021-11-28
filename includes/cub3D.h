@@ -6,7 +6,7 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/27 13:43:38 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/28 13:40:01 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ t_map		*parse(char *cubFile);
 t_format	*initStT(void);
 void		parseFormat(int fd, t_format **t);
 int			white_spaces_check(char *str);
+void    	setValueFC(char *str, int *i);
 
 #endif

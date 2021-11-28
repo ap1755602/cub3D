@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parseMap.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/28 13:39:40 by frodney           #+#    #+#             */
+/*   Updated: 2021/11/28 13:39:41 by frodney          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 t_map	*initMapS(void)
@@ -77,8 +89,8 @@ void parseMap(int fd, t_map **map)
 	validMap(map);
 	create2dMatrix(map);
 	//--------print_2d_matrix-------
-	int i = -1;
-	while ((*map)->m[++i])
-		printf("%s\n", (*map)->m[i]);
+	// int i = -1;
+	// while ((*map)->m[++i])
+	// 	printf("%s\n", (*map)->m[i]);
 
 }
