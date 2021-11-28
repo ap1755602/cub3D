@@ -199,12 +199,26 @@ void	graphics(t_game *game)
 		double step = 1.0 * texHeight / lineHeight;
 		// Starting texture coordinate
 		double texPos = (drawStart - game->wndw_size.y / 2 + lineHeight / 2) * step;
+		unsigned int color;
 		for(int y = drawStart; y<drawEnd; y++)
 		{
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 			int texY = (int)texPos & (texHeight - 1);
 			texPos += step;
-			unsigned int color = get_color(&game->texs[0], texX, texY);
+			if (side == 0)
+			{
+				if (stepX == 1)
+					color = get_color(&game->texs[0], texX, texY);
+				else
+					color = get_color(&game->texs[1], texX, texY);
+			}
+			else
+			{
+				if (stepY == 1)
+					color = get_color(&game->texs[2], texX, texY);
+				else
+					color = get_color(&game->texs[3], texX, texY);
+			}
 			apply_pixel(&game->img, x, y, color);
       	}
 		draw_line(&game->img, x, 0, drawStart, 0x0033b5ff);

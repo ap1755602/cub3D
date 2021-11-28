@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/27 11:48:21 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/28 08:40:06 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ typedef struct s_format
 	char *WE;
 	char *EA;
 	int  F;
-	int FF;
-	int FFF;
+	// int FF;
+	// int FFF;
 //	char *C;
 	int C;
-	int CC;
-	int CCC;
+	// int CC;
+	// int CCC;
 }	t_format;
 
 typedef struct s_map_list

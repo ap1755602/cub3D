@@ -68,7 +68,7 @@ void validMap(t_map **map)
 	int			i;
 
 	i = 0;
-	if (!(*map)->lst)
+	if (!(*map)->lst || !(*map)->lst->next)
 		terminate("Error: have no map");
 	lst = (*map)->lst;
 	while (lst->next)
@@ -102,5 +102,4 @@ void validMap(t_map **map)
 	}
 	if (!(*map)->player)
 		terminate("Error: player is not set");
-	// проверка на плеера
 }

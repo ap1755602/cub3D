@@ -12,11 +12,11 @@ t_format *initStT(void)
 //	t->F = NULL;
 //	t->C = NULL;
 	t->F = -1;
-	t->FF = -1;
-	t->FFF = -1;
+	// t->FF = -1;
+	// t->FFF = -1;
 	t->C = -1;
-	t->CC = -1;
-	t->CCC = -1;
+	// t->CC = -1;
+	// t->CCC = -1;
 	return (t);
 }
 
@@ -57,6 +57,7 @@ static void setValueTexture(char *str, char **value)
 //	*value = trimed;
 //	free (str);
 //}
+
 int ft_isnum(char *str)
 {
 	while (*str)
@@ -72,11 +73,18 @@ int ft_isnum(char *str)
 	return (1);
 }
 
-static void setValueFC(char *str, int *i, int *ii, int *iii) // set alpha to i and then to hex
+int		getRGB(int R, int G, int B)
 {
-	char *ptr;
-	char *ptr1;
-	char *trimed;
+	return ((((R * 256) + G) * 256) + B);
+}
+static void setValueFC(char *str, int *i)//, int *ii, int *iii) // set alpha to i and then to hex
+{
+	char	*ptr;
+	char	*ptr1;
+	char	*trimed;
+	int		R;
+	int		G;
+	int		B;
 
 	if (*i != -1)
 		terminate(ft_strjoin("Error: double trying set val: ", str));
@@ -95,9 +103,10 @@ static void setValueFC(char *str, int *i, int *ii, int *iii) // set alpha to i a
 	++ptr1;
 	if (!ft_isnum(trimed) || !ft_isnum(ptr) || !ft_isnum(ptr1))
 		terminate("Error: non valid color format");
-	*i = ft_atoi(trimed);
-	*ii = ft_atoi(ptr);
-	*iii = ft_atoi(ptr1);
+	R = ft_atoi(trimed);
+	G = ft_atoi(ptr);
+	B = ft_atoi(ptr1);
+	*i = getRGB(R, G, B);
 	free (str);
 }
 
@@ -114,20 +123,20 @@ static void setFormat(char *str, t_format **t)
 	else if (!ft_strncmp(str, "EA ", 3))
 		setValueTexture(str, &(*t)->EA);
 	else if (!ft_strncmp(str, "F ", 2))
-		setValueFC(str, &(*t)->F, &(*t)->FF, &(*t)->FFF);
+		setValueFC(str, &(*t)->F); // &(*t)->FF, &(*t)->FFF);
 	else if (!ft_strncmp(str, "C ", 2))
-		setValueFC(str, &(*t)->C, &(*t)->CC, &(*t)->CCC);
+		setValueFC(str, &(*t)->C); //, &(*t)->CC, &(*t)->CCC);
 	else
 		terminate(ft_strjoin("Error: unrecognizable format: ", str));
 }
 
-void parseFormat(int fd, t_format **t)
+ void parseFormat(int fd, t_format **t)
 {
 	int	counter;
 	char *currStr;
 
 	counter = 6;
-	while(get_next_line(fd, &currStr) && counter)
+	while(counter && get_next_line(fd, &currStr))
 	{
 		if (!ft_strncmp(currStr, "\0", 1))
 		{
@@ -143,11 +152,10 @@ void parseFormat(int fd, t_format **t)
 	printf("WE %s\n", (*t)->WE);
 	printf("EA %s\n", (*t)->EA);
 	printf("F %d\n", (*t)->F);
-	printf("FF %d\n", (*t)->FF);
-	printf("FFF %d\n", (*t)->FFF);
+	// printf("FF %d\n", (*t)->FF);
+	// printf("FFF %d\n", (*t)->FFF);
 	printf("C %d\n", (*t)->C);
-	printf("CC %d\n", (*t)->CC);
-	printf("CCC %d\n\n", (*t)->CCC);
-
+	// printf("CC %d\n", (*t)->CC);
+	// printf("CCC %d\n\n", (*t)->CCC);
 }
 
