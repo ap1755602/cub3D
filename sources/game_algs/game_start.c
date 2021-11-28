@@ -16,14 +16,18 @@ void	game_init(t_game *game)
 
 int key_unpress(int key, t_game *game)
 {
-	if (key == KEY_UP)
+	if (key == KEY_W)
 		game->flags.w_key = 0;
-	if (key == KEY_DOWN)
+	if (key == KEY_S)
 		game->flags.s_key = 0;
-	if (key == KEY_LEFT)
+	if (key == KEY_A)
 		game->flags.a_key = 0;
-	if (key == KEY_RIGHT)
+	if (key == KEY_D)
 		game->flags.d_key = 0;
+	if (key == KEY_LEFT)
+		game->flags.left_key = 0;
+	if (key == KEY_RIGHT)
+		game->flags.right_key = 0;
 	if (key == ESC)
 		exit_game(game);
 	else
@@ -95,6 +99,8 @@ void	start_game(t_game *game)
 	game->flags.d_key = 0;
 	game->flags.s_key = 0;
 	game->flags.w_key = 0;
+	game->flags.left_key = 0;
+	game->flags.right_key = 0;
 	plane_init(&game->coords, game->map->player);
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));
@@ -103,6 +109,7 @@ void	start_game(t_game *game)
 	init_texture(game, &game->texs[1], game->map->format->NO);
 	init_texture(game, &game->texs[2], game->map->format->SO);
 	init_texture(game, &game->texs[3], game->map->format->WE);
+	game->map->m[game->map->player->y][game->map->player->x] = '0';
 	mlx_hook(game->window, 17, 0, exit_game, game);
 	mlx_hook(game->window, 2, 0, key_press, game);
 	mlx_hook(game->window, 3, 0, key_unpress, game);

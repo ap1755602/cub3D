@@ -42,16 +42,36 @@ void	go_backward(t_coords *c, char **map)
 		c->posY -= MOVE_SPEED * c->dirY;
 }
 
+void	go_left(t_coords *c, char **map)
+{
+	if (map[(int)c->posY][(int)(c->posX - c->planeX)] == '0')
+		c->posX -= MOVE_SPEED * c->planeX;
+	if (map[(int)(c->posY - c->planeY)][(int)c->posX] == '0')
+		c->posY -= MOVE_SPEED * c->planeY;
+}
+
+void	go_right(t_coords *c, char **map)
+{
+	if (map[(int)c->posY][(int)(c->posX + c->planeX)] == '0')
+		c->posX += MOVE_SPEED * c->planeX;
+	if (map[(int)(c->posY + c->planeY)][(int)c->posX] == '0')
+		c->posY += MOVE_SPEED * c->planeY;
+}
+
 int	key_press(int key, t_game *game)
 {
-	if (key == KEY_UP)
+	if (key == KEY_W)
 		game->flags.w_key = 1;
-	if (key == KEY_DOWN)
+	if (key == KEY_S)
 		game->flags.s_key = 1;
-	if (key == KEY_LEFT)
+	if (key == KEY_A)
 		game->flags.a_key = 1;
-	if (key == KEY_RIGHT)
+	if (key == KEY_D)
 		game->flags.d_key = 1;
+	if (key == KEY_LEFT)
+		game->flags.left_key = 1;
+	if (key == KEY_RIGHT)
+		game->flags.right_key = 1;
 	if (key == ESC)
 		exit_game(game);
 	else
