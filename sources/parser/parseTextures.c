@@ -20,74 +20,61 @@ static void checkFileFormat(char *str) // how to check valid and do we need ./ (
 
 	i = ft_strlen(str) - 4;
 	if (ft_strncmp(&(str[i]), ".xpm\0", 5))
-		terminate(ft_strjoin("Error: non valid file format", &str[i]));
+		terminate("Error");
 }
 
 static void setValueTexture(char *str, char **value)
 {
 	char *ptr;
-	char *trimed;
+	char *trimed_path;
 
 	if (*value)
-		terminate(ft_strjoin("Error: double trying set val: ", str));
+		terminate("Error");
 	ptr = ft_strchr(str, ' ');
-	trimed = ft_strtrim(ptr, " "); // ! malloc
-	if (!ptr || !trimed) // || ft_strncmp(trimed, "./", 2))
-		terminate(ft_strjoin("Error: non valid texture file", trimed));
-	// add here check . / after ./
-	checkFileFormat(trimed);
-	*value = trimed;
+	trimed_path = ft_strtrim(ptr, " ");
+	if (!ptr || !trimed_path)
+		terminate("Error");
+	checkFileFormat(trimed_path);
+	*value = trimed_path;
+	free (str);
 }
 
-int ft_isnum(char *str)
+int		getRGB(char *red, char *green, char *blue)
 {
-	while (*str)
-	{
-		if (*str > 47 && *str < 58)
-		{
-			++str;
-			continue ;
-		}
-		else
-			return (0);
-	}
-	return (1);
-}
+	int R;
+	int G;
+	int B;
 
-int		getRGB(int R, int G, int B)
-{
+	R = ft_atoi(red);
+	G = ft_atoi(green);
+	B = ft_atoi(blue);
 	return ((((R * 256) + G) * 256) + B);
 }
 static void setValueFC(char *str, int *i)
 {
-	char	*ptr;
-	char	*ptr1;
-	char	*trimed;
-	int		R;
-	int		G;
-	int		B;
+	char	*green;
+	char	*blue;
+	char	*red;
+
 
 	if (*i != -1)
-		terminate(ft_strjoin("Error: double trying set val: ", str));
-
-	ptr = ft_strchr(str, ' ');
-	trimed = ft_strtrim(ptr, " ");
-	ptr = ft_strchr(trimed, ',');
-	if (!ptr || !*(++ptr))
-		terminate("Error: non valid color format");
-	*(--ptr) = '\0';
-	++ptr;
-	ptr1 = ft_strchr(ptr, ',');
-	if (!ptr1 || !*(++ptr1))
-		terminate("Error: non valid color format");
-	*(--ptr1) = '\0';
-	++ptr1;
-	if (!ft_isnum(trimed) || !ft_isnum(ptr) || !ft_isnum(ptr1))
-		terminate("Error: non valid color format");
-	R = ft_atoi(trimed);
-	G = ft_atoi(ptr);
-	B = ft_atoi(ptr1);
-	*i = getRGB(R, G, B);
+		terminate("Error");
+	green = ft_strchr(str, ' ');
+	red = ft_strtrim(green, " ");
+	green = ft_strchr(red, ',');
+	if (!green || !*(++green))
+		terminate("Error");
+	*(--green) = '\0';
+	++green;
+	blue = ft_strchr(green, ',');
+	if (!blue || !*(++blue))
+		terminate("Error");
+	*(--blue) = '\0';
+	++blue;
+	if (!ft_isnum(red) || !ft_isnum(green) || !ft_isnum(blue))
+		terminate("Error");
+	*i = getRGB(red, green, blue);
+	free (red);
 	free (str);
 }
 
@@ -108,7 +95,7 @@ static void setFormat(char *str, t_format **t)
 	else if (!ft_strncmp(str, "C ", 2))
 		setValueFC(str, &(*t)->C); 
 	else
-		terminate(ft_strjoin("Error: unrecognizable format: ", str));
+		terminate("Error");
 }
 
  void parseFormat(int fd, t_format **t)

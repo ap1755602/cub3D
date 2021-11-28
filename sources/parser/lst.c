@@ -22,7 +22,6 @@ void	lstadd_back(t_map_list **lst, t_map_list *new)
 	temp = lst_last((*lst)->head);
 	temp->next = new;
 	new->prev = temp;
-//	printf("str prev %s\n", new->prev->str);
 }
 
 t_map_list	*lst_new(char *str, int strNum)

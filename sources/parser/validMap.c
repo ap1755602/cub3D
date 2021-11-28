@@ -26,7 +26,7 @@ static void	udlr(t_map_list *lst, int x, int dir)
 	while (x)
 	{
 		if (!lst || (size_t)x > ft_strlen(lst->str) || x < 0)
-			terminate("Error: somnitelnaya error");
+			terminate("Error");
 		if (lst->str[x] == '0')
 		{
 			if (dir == UP)
@@ -42,7 +42,7 @@ static void	udlr(t_map_list *lst, int x, int dir)
 			lst->str[x] == 'E' || lst->str[x] == 'W' ||  lst->str[x] == '1')
 			return ;
 		else
-			terminate(ft_strjoin("Error: non valid value", lst->str));
+			terminate("Error");
 	}
 }
 
@@ -69,7 +69,7 @@ void validMap(t_map **map)
 
 	i = 0;
 	if (!(*map)->lst || !(*map)->lst->next)
-		terminate("Error: have no map");
+		terminate("Error");
 	lst = (*map)->lst;
 	while (lst->next)
 	{
@@ -95,11 +95,11 @@ void validMap(t_map **map)
 				continue;
 			}
 			else
-				terminate(ft_strjoin("Error: non valid value in map str: ", lst->str));
+				terminate("Error");
 		}
 		i = 0;
 		lst = lst->next;
 	}
 	if (!(*map)->player)
-		terminate("Error: player is not set");
+		terminate("Error");
 }

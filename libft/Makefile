@@ -26,7 +26,7 @@ SRC_LIST = ft_memset.c	ft_bzero.c	ft_memcpy.c ft_memccpy.c \
 		ft_calloc.c ft_strdup.c ft_itoa.c ft_substr.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_strjoin.c ft_strmapi.c \
 		ft_strtrim.c ft_split.c get_next_line.c ft_strndup.c \
-		terminate.c ft_lst_add_back.c gnl_utils.c\
+		terminate.c ft_lst_add_back.c gnl_utils.c ft_isnum.c\
 
 SRC = $(SRC_DIR)/$(SRC_LIST)
 OBJ_DIR = objects/

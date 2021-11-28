@@ -71,5 +71,6 @@ char				*ft_strndup(const char *s, size_t n);
 void 				terminate(char *error_message);
 char				*join_str(char const *s1, char const *s2);
 int					has_return(char *str);
+int					ft_isnum(char *str);
 
 #endif
