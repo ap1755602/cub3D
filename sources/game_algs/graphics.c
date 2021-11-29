@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:30:36 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 11:59:04 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 12:40:01 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ void	assign_texture_pixels(t_game *game, t_dataRay *r, int x)
 		if (r->side == 1)
 		{
 			if (r->stepY == 1)
-				color = get_color(&game->texs[2], r->texX, r->texY);
-			else
 				color = get_color(&game->texs[3], r->texX, r->texY);
+			else
+				color = get_color(&game->texs[2], r->texX, r->texY);
 		}
 		apply_pixel(&game->img, x, y, color);
 		y++;

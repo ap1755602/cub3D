@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:55:33 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/28 16:55:42 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 12:38:27 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	exit_game(t_game *game)
 {
-	(void) game;
+	free(game->texs);
+	ft_putendl_fd("EXIT!", 1);
 	exit(0);
 }
 
