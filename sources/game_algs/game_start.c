@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:02:43 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 12:32:15 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 13:21:50 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ void	dir_init(t_coords *c, t_player *p)
 {
 	if (p->direction == 'W')
 	{
-		c->dirX = -1;
-		c->dirY = 0;
+		c->dirx = -1;
+		c->diry = 0;
 	}
 	if (p->direction == 'E')
 	{
-		c->dirX = 1;
-		c->dirY = 0;
+		c->dirx = 1;
+		c->diry = 0;
 	}
 	if (p->direction == 'N')
 	{
-		c->dirX = 0;
-		c->dirY = 1;
+		c->dirx = 0;
+		c->diry = 1;
 	}
 	if (p->direction == 'S')
 	{
-		c->dirX = 0;
-		c->dirY = -1;
+		c->dirx = 0;
+		c->diry = -1;
 	}
 }
 
@@ -60,23 +60,23 @@ void	plane_init(t_coords *c, t_player *p)
 {
 	if (p->direction == 'W')
 	{
-		c->planeX = 0;
-		c->planeY = 0.66;
+		c->planex = 0;
+		c->planey = 0.66;
 	}
 	if (p->direction == 'E')
 	{
-		c->planeX = 0;
-		c->planeY = -0.66;
+		c->planex = 0;
+		c->planey = -0.66;
 	}
 	if (p->direction == 'N')
 	{
-		c->planeX = 0.66;
-		c->planeY = 0;
+		c->planex = 0.66;
+		c->planey = 0;
 	}
 	if (p->direction == 'S')
 	{
-		c->planeX = -0.66;
-		c->planeY = 0;
+		c->planex = -0.66;
+		c->planey = 0;
 	}
 }
 
@@ -95,8 +95,8 @@ void	init_texture(t_game *game, t_texture *tex, char *path)
 
 void	start_game(t_game *game)
 {
-	game->coords.posX = game->map->player->x + 0.5;
-	game->coords.posY = game->map->player->y + 0.5;
+	game->coords.posx = game->map->player->x + 0.5;
+	game->coords.posy = game->map->player->y + 0.5;
 	plane_init(&game->coords, game->map->player);
 	dir_init(&game->coords, game->map->player);
 	game->texs = malloc(4 * sizeof(t_texture));
