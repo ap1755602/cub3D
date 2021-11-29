@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/01 22:50:16 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/29 13:14:27 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:43:23 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef PARSER_H
+# define PARSER_H
+
+/*
+** Including of headers:
+*/
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -21,6 +25,10 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdbool.h>
+
+/*
+** Gameplay define:
+*/
 
 # define MOVE_SPEED 0.2
 # define ROT_SPEED 0.09
@@ -62,20 +70,58 @@ typedef struct s_map
 }	t_map;
 
 /*
- * parse functions
- */
+** ########################################################################
+** ########################## CONFIG PARSING ##############################
+** ########################################################################
+** ######################### Folder: parsing ##############################
+** ########################################################################
+*/
+
+/*
+** File: initPlayerSt.c
+*/
+
+void		set_player_st(t_map **map, int y, int x, char dir);
+
+/*
+** File: lst.c
+*/
+
+t_map_list	*lst_new(char *str, int str_num);
+t_map_list	*lst_last(t_map_list *lst);
+void		lstadd_back(t_map_list **lst, t_map_list *new);
+
+/*
+** File: parse.c
+*/
+
+t_map		*parse(char *cubFile);
+
+/*
+** File: parseColors.c
+*/
+
+void		set_value_f_c(char *str, int *i);
+
+/*
+** File: parseMap.c
+*/
 
 t_map		*init_map_s(void);
-t_map_list	*lst_new(char *str, int str_num);
-void		lstadd_back(t_map_list **lst, t_map_list *new);
-t_map_list	*lst_last(t_map_list *lst);
 void		parse_map(int fd, t_map **map);
-void		valid_map(t_map **map);
-t_map		*parse(char *cubFile);
+
+/*
+** File: parseTextures.c
+*/
+
 t_format	*init_st_texture(void);
 void		parse_format(int fd, t_format **t);
+
+/*
+** File: validMap.c
+*/
+
+void		valid_map(t_map **map);
 int			white_spaces_check(char *str);
-void		set_value_f_c(char *str, int *i);
-void		set_player_st(t_map **map, int y, int x, char dir);
 
 #endif

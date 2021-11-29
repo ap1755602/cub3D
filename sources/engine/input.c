@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:55:33 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 12:38:27 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:33 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rendering.h"
+#include "engine.h"
 
 int	exit_game(t_game *game)
 {

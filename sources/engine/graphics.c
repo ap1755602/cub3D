@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:30:36 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 13:22:24 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:33 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rendering.h"
+#include "engine.h"
 
 void	step_and_side_dist_calcs(t_game *game, t_dataRay *r)
 {

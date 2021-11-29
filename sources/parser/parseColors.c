@@ -6,11 +6,11 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 13:39:54 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:15:21 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:55 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "parser.h"
 
 static int	get_rgb(char *red, char *green, char *blue)
 {

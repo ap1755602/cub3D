@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+         #
+#    By: frodney <frodney@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/28 13:40:04 by frodney           #+#    #+#              #
-#    Updated: 2021/11/28 19:32:38 by cjoanne          ###   ########.fr        #
+#    Updated: 2021/11/29 17:28:55 by frodney          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,9 @@ MLX_DIR = ./minilibx/
 MLX_HEADER = $(MLX_DIR)
 
 HEADER_DIR = ./includes/
-HEADER =  $(addprefix $(HEADER_DIR), cub3D.h)
+HEADER =  $(addprefix $(HEADER_DIR), parser.h)
 
-G = game_algs/
+G = engine/
 P = parser/
 SRC_DIR = ./sources/
 SRC_LIST = main.c \

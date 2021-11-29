@@ -6,11 +6,11 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 13:39:49 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:14:41 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:55 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "parser.h"
 
 t_format	*init_st_texture(void)
 {

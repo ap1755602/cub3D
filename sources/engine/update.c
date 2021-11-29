@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:03:45 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 13:18:18 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:33 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rendering.h"
+#include "engine.h"
 
 void	draw_ceil(t_game *game, int x, int endDraw, int color)
 {

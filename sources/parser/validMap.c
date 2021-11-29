@@ -6,11 +6,11 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:11:56 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:12:12 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:55 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "parser.h"
 #define UP 1
 #define DOWN 2
 #define LEFT 3

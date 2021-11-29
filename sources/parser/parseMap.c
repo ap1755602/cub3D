@@ -6,11 +6,11 @@
 /*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:09:23 by frodney           #+#    #+#             */
-/*   Updated: 2021/11/28 14:10:02 by frodney          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:40:35 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "parser.h"
 
 t_map	*init_map_s(void)
 {
@@ -22,7 +22,7 @@ t_map	*init_map_s(void)
 	return (map);
 }
 
-void	set_lst_map(int fd, t_map **map, char *str)
+ static void	set_lst_map(int fd, t_map **map, char *str)
 {
 	char		*curr_str;
 	t_map_list	*new;

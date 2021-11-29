@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   graphics_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: frodney <frodney@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:23:43 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 13:21:50 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 17:28:33 by frodney          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rendering.h"
+#include "engine.h"
 
 void	apply_pixel(t_img *img, int x, int y, int color)
 {
