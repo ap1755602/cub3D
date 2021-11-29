@@ -50,7 +50,6 @@ typedef struct s_dataRay
 	double	perpWallDist;
 	double	sideDistX;
 	double	sideDistY;
-	double	WallX;
 	double	cameraX;
 	double	rayDirX;
 	double	rayDirY;

@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:02:43 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/28 19:05:48 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 12:00:24 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ void	game_init(t_game *game, t_img *img)
 	img->img = mlx_new_image(game->mlx, game->wndw_size.x, game->wndw_size.y);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
+	game->flags.a_key = 0;
+	game->flags.d_key = 0;
+	game->flags.s_key = 0;
+	game->flags.w_key = 0;
+	game->flags.left_key = 0;
+	game->flags.right_key = 0;
 }
 
 void	dir_init(t_coords *c, t_player *p)
@@ -85,16 +91,6 @@ void	init_texture(t_game *game, t_texture *tex, char *path)
 	}
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->size_line,
 			&tex->endian);
-}
-
-void	init_key_flags(t_flags *flags)
-{
-	flags->a_key = 0;
-	flags->d_key = 0;
-	flags->s_key = 0;
-	flags->w_key = 0;
-	flags->left_key = 0;
-	flags->right_key = 0;
 }
 
 void	start_game(t_game *game)

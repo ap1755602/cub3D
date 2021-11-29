@@ -6,22 +6,11 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:30:36 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/28 19:30:37 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 11:59:04 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rendering.h"
-
-void	ray_calcs(t_game *game, t_dataRay *r, int x)
-{
-	r->cameraX = 2 * x / (double)game->wndw_size.x - 1;
-	r->rayDirX = game->coords.dirX + game->coords.planeX * r->cameraX;
-	r->rayDirY = game->coords.dirY + game->coords.planeY * r->cameraX;
-	r->mapX = (int)(game->coords.posX);
-	r->mapY = (int)(game->coords.posY);
-	r->deltaDistX = fabs(1 / r->rayDirX);
-	r->deltaDistY = fabs(1 / r->rayDirY);
-}
 
 void	step_and_side_dist_calcs(t_game *game, t_dataRay *r)
 {
@@ -99,7 +88,8 @@ void	which_wall(t_game *game, t_dataRay *r)
 	if (r->side == 1 && r->rayDirY < 0)
 		r->texX = texWidth - r->texX - 1;
 	r->step = 1.0 * texHeight / r->lineHeight;
-	r->texPos = (r->drawStart - game->wndw_size.y / 2 + r->lineHeight / 2) * r->step;
+	r->texPos = (r->drawStart - game->wndw_size.y / 2 + r->lineHeight / 2);
+	r->texPos *= r->step;
 }
 
 void	assign_texture_pixels(t_game *game, t_dataRay *r, int x)

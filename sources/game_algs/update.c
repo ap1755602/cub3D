@@ -6,20 +6,32 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:03:45 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/28 19:30:24 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 12:10:01 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rendering.h"
 
-void	draw_line(t_img *img, int x, int startDraw, int endDraw, int color)
+void	draw_ceil(t_game *game, int x, int endDraw, int color)
+{
+	int	y;
+
+	y = 0;
+	while (y < endDraw)
+	{
+		my_mlx_pixel_put(&game->img, x, y, color);
+		y++;
+	}
+}
+
+void	draw_floor(t_game *game, int x, int startDraw, int color)
 {
 	int	y;
 
 	y = startDraw;
-	while (y < endDraw)
+	while (y < game->wndw_size.y - 1)
 	{
-		my_mlx_pixel_put(img, x, y, color);
+		my_mlx_pixel_put(&game->img, x, y, color);
 		y++;
 	}
 }
@@ -38,9 +50,8 @@ void	graphics(t_game *game)
 		lines_calcs(game, &r);
 		which_wall(game, &r);
 		assign_texture_pixels(game, &r, x);
-		draw_line(&game->img, x, 0, r.drawStart, game->map->format->c);
-		draw_line(&game->img, x, r.drawEnd,
-				game->wndw_size.y, game->map->format->f);
+		draw_ceil(game, x, r.drawStart, game->map->format->c);
+		draw_floor(game, x, r.drawEnd, game->map->format->f);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx, game->window, game->img.img, 0, 0);
