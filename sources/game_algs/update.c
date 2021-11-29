@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:03:45 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/29 12:10:01 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 13:18:18 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	graphics(t_game *game)
 		lines_calcs(game, &r);
 		which_wall(game, &r);
 		assign_texture_pixels(game, &r, x);
-		draw_ceil(game, x, r.drawStart, game->map->format->c);
-		draw_floor(game, x, r.drawEnd, game->map->format->f);
+		draw_ceil(game, x, r.drawstart, game->map->format->c);
+		draw_floor(game, x, r.drawend, game->map->format->f);
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx, game->window, game->img.img, 0, 0);

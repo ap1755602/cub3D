@@ -6,7 +6,7 @@
 /*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:48:30 by cjoanne           #+#    #+#             */
-/*   Updated: 2021/11/28 16:52:36 by cjoanne          ###   ########.fr       */
+/*   Updated: 2021/11/29 13:21:50 by cjoanne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	turn_left(t_coords *c)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = c->dirX;
-	c->dirX = c->dirX * cos(ROT_SPEED) - c->dirY * sin(ROT_SPEED);
-	c->dirY = old_dir_x * sin(ROT_SPEED) + c->dirY * cos(ROT_SPEED);
-	old_plane_x = c->planeX;
-	c->planeX = c->planeX * cos(ROT_SPEED) - c->planeY * sin(ROT_SPEED);
-	c->planeY = old_plane_x * sin(ROT_SPEED) + c->planeY * cos(ROT_SPEED);
+	old_dir_x = c->dirx;
+	c->dirx = c->dirx * cos(ROT_SPEED) - c->diry * sin(ROT_SPEED);
+	c->diry = old_dir_x * sin(ROT_SPEED) + c->diry * cos(ROT_SPEED);
+	old_plane_x = c->planex;
+	c->planex = c->planex * cos(ROT_SPEED) - c->planey * sin(ROT_SPEED);
+	c->planey = old_plane_x * sin(ROT_SPEED) + c->planey * cos(ROT_SPEED);
 }
 
 void	turn_right(t_coords *c)
@@ -30,26 +30,26 @@ void	turn_right(t_coords *c)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = c->dirX;
-	c->dirX = c->dirX * cos(-ROT_SPEED) - c->dirY * sin(-ROT_SPEED);
-	c->dirY = old_dir_x * sin(-ROT_SPEED) + c->dirY * cos(-ROT_SPEED);
-	old_plane_x = c->planeX;
-	c->planeX = c->planeX * cos(-ROT_SPEED) - c->planeY * sin(-ROT_SPEED);
-	c->planeY = old_plane_x * sin(-ROT_SPEED) + c->planeY * cos(-ROT_SPEED);
+	old_dir_x = c->dirx;
+	c->dirx = c->dirx * cos(-ROT_SPEED) - c->diry * sin(-ROT_SPEED);
+	c->diry = old_dir_x * sin(-ROT_SPEED) + c->diry * cos(-ROT_SPEED);
+	old_plane_x = c->planex;
+	c->planex = c->planex * cos(-ROT_SPEED) - c->planey * sin(-ROT_SPEED);
+	c->planey = old_plane_x * sin(-ROT_SPEED) + c->planey * cos(-ROT_SPEED);
 }
 
 void	go_forward(t_coords *c, char **map)
 {
-	if (map[(int)c->posY][(int)(c->posX + c->dirX)] == '0')
-		c->posX += MOVE_SPEED * c->dirX;
-	if (map[(int)(c->posY + c->dirY)][(int)c->posX] == '0')
-		c->posY += MOVE_SPEED * c->dirY;
+	if (map[(int)c->posy][(int)(c->posx + c->dirx)] == '0')
+		c->posx += MOVE_SPEED * c->dirx;
+	if (map[(int)(c->posy + c->diry)][(int)c->posx] == '0')
+		c->posy += MOVE_SPEED * c->diry;
 }
 
 void	go_backward(t_coords *c, char **map)
 {
-	if (map[(int)c->posY][(int)(c->posX - c->dirX)] == '0')
-		c->posX -= MOVE_SPEED * c->dirX;
-	if (map[(int)(c->posY - c->dirY)][(int)c->posX] == '0')
-		c->posY -= MOVE_SPEED * c->dirY;
+	if (map[(int)c->posy][(int)(c->posx - c->dirx)] == '0')
+		c->posx -= MOVE_SPEED * c->dirx;
+	if (map[(int)(c->posy - c->diry)][(int)c->posx] == '0')
+		c->posy -= MOVE_SPEED * c->diry;
 }

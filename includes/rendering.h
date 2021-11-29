@@ -1,9 +1,21 @@
-#ifndef _RENDERING_HPP_
-#define _RENDERING_HPP_
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjoanne <cjoanne@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 13:16:33 by cjoanne           #+#    #+#             */
+/*   Updated: 2021/11/29 13:22:40 by cjoanne          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "cub3D.h"
-#include <math.h>
-#include <stdbool.h>
+#ifndef RENDERING_H
+# define RENDERING_H
+
+# include "cub3D.h"
+# include <math.h>
+# include <stdbool.h>
 
 enum e_keycode
 {
@@ -33,38 +45,38 @@ typedef struct s_img_data
 
 typedef struct s_dataRay
 {
-	int		mapX;
-	int		mapY;
-	int		stepX;
-	int		stepY;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
 	int		hit;
 	int		side;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
 	int		color;
-	int		texX;
-	int		texY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	double	sideDistX;
-	double	sideDistY;
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
+	int		texx;
+	int		texy;
+	double	deltadistx;
+	double	deltadisty;
+	double	perpwalldist;
+	double	sidedistx;
+	double	sidedisty;
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
 	double	step;
-	double	texPos;
+	double	texpos;
 }			t_dataRay;
 
 typedef struct s_coords
 {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
 }				t_coords;
 
 typedef struct s_texture
@@ -92,7 +104,7 @@ typedef struct s_game
 	void			*mlx;
 	void			*window;
 	t_vector		wndw_size;
-	t_img 			img;
+	t_img			img;
 	t_map			*map;
 	t_coords		coords;
 	t_flags			flags;
@@ -125,4 +137,5 @@ void	apply_pixel(t_img *img, int x, int y, int color);
 int		get_color_channel(t_texture *tex, int x, int y, int i);
 int		get_color(t_texture *tex, int x, int y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+
 #endif
